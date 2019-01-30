@@ -1,7 +1,8 @@
 {
   "name": "litho-component-tree-sonar-plugin",
+  "title": "Tree View",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "react": "^16.7.0",
     "react-d3-tree": "^1.12.2",
