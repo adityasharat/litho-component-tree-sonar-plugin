@@ -2,46 +2,7 @@ import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
 import './App.css';
 
-const data = [
-  {
-    name: 'Playground',
-    attributes: {
-      key: 'A',
-    },
-    children: [
-      {
-        name: 'Counter',
-        attributes: {
-          key: 'B',
-          state: JSON.stringify({ count: 0 })
-        },
-        children: [
-          {
-            name: 'Text',
-            attributes: {
-              key: 'C',
-              props: JSON.stringify({ text: 'Increment' })
-            },
-          },
-          {
-            name: 'Text',
-            attributes: {
-              key: 'C',
-              props: JSON.stringify({ text: '0' })
-            },
-          }    
-        ]
-      },
-      {
-        name: 'Text',
-        attributes: {
-          key: 'C',
-          props: JSON.stringify({ text: 'World' })
-        },
-      },
-    ],
-  },
-];
+const data = {"name":"PlaygroundComponent","attributes":{"key":"9","id":108,"global-key":"9"},"children":[{"name":"Counter","attributes":{"key":"11","id":111,"global-key":"9,10,11"},"children":[{"name":"Text","attributes":{"key":"8","id":113,"global-key":"9,10,11,10,8"},"children":[]},{"name":"Text","attributes":{"key":"8","id":114,"global-key":"9,10,11,10,8!1"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":112,"global-key":"9,10,8"},"children":[]}]};
 
 class App extends Component {
   render() {
