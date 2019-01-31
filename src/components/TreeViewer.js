@@ -51,11 +51,11 @@ class TreeViewer extends Component {
   componentWillReceiveProps(props) {
     if (this.props.data === props.data) {
       return;
+    } else {
+      this.setState({
+        data
+      });
     }
-
-    this.setState({
-      data: data
-    });
   }
 
   render() {
