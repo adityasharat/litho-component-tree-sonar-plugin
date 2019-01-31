@@ -31,3 +31,26 @@
     transform: rotate(360deg);
   }
 }
+
+.node-name {
+  position: relative;
+  width: auto;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: #fff;
+  display: inline-block;
+  font-size: 0.2em;
+}
+
+.node-attributes {
+
+}
+
+.node-attributes .node-attribute-keys {
+
+}
+
+.node-attributes .node-attribute-value {
+
+}
