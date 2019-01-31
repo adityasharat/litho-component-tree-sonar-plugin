@@ -5,18 +5,42 @@ import NodeLabel from './NodeLabel';
 
 const data = {"name":"PlaygroundComponent","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
 
+function create(data) {
+  
+  let shape = {
+    shape: 'circle',
+    shapeProps: {
+      fill: '#ebebeb',
+      r: 10,
+      strokeWidth: 1,
+      stroke: 'rgba(0,0,0,0.2)'
+    },
+  };
+  
+  if (data.children instanceof Array && data.children.length > 0) {
+    shape.shapeProps.fill = '#727272'
+    data.nodeSvgShape = shape;
+    data.children = data.children.map(create);
+  } else {
+    data.nodeSvgShape = shape;
+  }
+
+  console.log(data);
+  return data;
+}
+
 class TreeViewer extends Component {
 
   state = {
-    data: data,
+    data: create(data),
     config: {
       scaleExtent: {
         min: 1,
         max: 3
       },
       separation: {
-        siblings: 2,
-        nonSiblings: 4
+        siblings: 1.5,
+        nonSiblings: 2
       },
       translate: {
         x: 800,
@@ -33,7 +57,6 @@ class TreeViewer extends Component {
   constructor(props) {
     super(props);
     this.treeContainer = React.createRef();
-    console.log(this.props.nodeLabelComponent);
   }
 
   componentDidMount() {
@@ -56,7 +79,7 @@ class TreeViewer extends Component {
       return;
     } else {
       this.setState({
-        data
+        data: create(props.data)
       });
     }
   }
@@ -72,9 +95,9 @@ class TreeViewer extends Component {
               scaleExtent={this.state.config.scaleExtent}
               separation={this.state.config.separation}
               translate={this.state.config.translate} 
-              allowForeignObjects
               nodeSize={this.state.config.nodeSize}
               nodeLabelComponent={this.props.nodeLabelComponent}
+              allowForeignObjects
           />
       </div>
     );

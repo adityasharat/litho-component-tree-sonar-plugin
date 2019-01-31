@@ -17,7 +17,7 @@ function NodeLabel(props) {
       <ul className="node-attributes">
         {
           Object.keys(node.attributes)
-            .map(key => <NodeAttribute name={key} value={node.attributes[key]}/>)
+            .map(key => <NodeAttribute key={key} name={key} value={node.attributes[key]}/>)
         }
       </ul>
     </div>
