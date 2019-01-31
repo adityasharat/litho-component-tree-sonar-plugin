@@ -6,7 +6,6 @@ import NodeLabel from './NodeLabel';
 const data = {"name":"PlaygroundComponent","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
 
 function create(data) {
-  
   let shape = {
     shape: 'circle',
     shapeProps: {
@@ -25,7 +24,8 @@ function create(data) {
     data.nodeSvgShape = shape;
   }
 
-  console.log(data);
+  // TODO: use the diff to color code the nodes
+
   return data;
 }
 
