@@ -32,6 +32,10 @@
   }
 }
 
+.node-container {
+
+}
+
 .node-name {
   position: relative;
   width: auto;
@@ -41,16 +45,37 @@
   background: #fff;
   display: inline-block;
   font-size: 0.2em;
+  margin: 12px 0 0 0;
 }
 
 .node-attributes {
-
+  padding: 0;
+  margin: 0;
+  font-size: 0.1em;
+  list-style: none;
 }
 
-.node-attributes .node-attribute-keys {
+.node-attributes .node-attribute-row {
+  padding: 0;
+  margin: 0;
+}
 
+.node-attributes .node-attribute-row {
+  width: 200px;
+}
+
+.node-attributes .node-attribute-key, .node-attributes .node-attribute-value {
+  display: inline-block;
+  margin: 0;
+}
+
+.node-attributes .node-attribute-key {
+  font-weight: 600;
 }
 
 .node-attributes .node-attribute-value {
-
+  opacity: 0.8;
+  background: #ebebeb;
+  padding: 1px 2px 1px 2px;
+  border-radius: 2px;
 }
