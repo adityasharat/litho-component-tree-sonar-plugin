@@ -10,7 +10,7 @@ class EventViewer extends Component {
   render() {
     return (
       <div className="eventviewer-container">
-        <h2 className="title">Events</h2>
+        <h2 className="title">{this.props.title}</h2>
         <div className="events-container">
           <ol className="events-list">
             {
@@ -30,6 +30,7 @@ class EventViewer extends Component {
 }
 
 EventViewer.defaultProps = {
+  title: 'Events',
   events: [],
   onSelect: () => {}
 };

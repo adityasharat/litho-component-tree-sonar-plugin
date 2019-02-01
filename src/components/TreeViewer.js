@@ -72,7 +72,7 @@ class TreeViewer extends Component {
   render() {
     console.log('TreeViewer: render')
     return (
-      <div id="treeWrapper" style={{width: '100%', height: '1440px'}} ref={this.treeContainer}>
+      <div className="tree-container" id="treeWrapper" ref={this.treeContainer}>
         <Tree data={this.state.data} 
               transitionDuration={this.state.config.transitionDuration}
               orientation={this.state.config.orientation}

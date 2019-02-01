@@ -84,7 +84,7 @@ class TreeMutationViewer extends Component {
   render() {
     return (
       <div>
-        <EventViewer events={this.props.events} onSelect={this.onSelect}/>
+        <EventViewer title="Trees" events={this.props.events} onSelect={this.onSelect}/>
         <TreeViewer data={this.state.current.data}/>
       </div>
     );

@@ -1,5 +1,8 @@
-.app-container {
+body {
   background-color: #efefef;
+}
+
+.app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,6 +16,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.tree-container {
+  margin: 0 auto;
+  background: #ddd;
+  width: 96%;
+  height: 1080px;
+  overflow: hidden;
 }
 
 .node-container {
@@ -98,4 +109,13 @@
   border: 1px solid #727272;
   border-radius: 6px;
   padding: 8px;
+}
+
+.footer {
+  margin: 16px auto 32px auto;
+  width: 96%;
+}
+
+.event-form {
+  font-size: 1em;
 }

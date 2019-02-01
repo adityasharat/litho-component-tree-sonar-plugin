@@ -29,9 +29,12 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <header className="app-container">
+        <main className="app-container">
           <TreeMutationViewer events={STUB_EVENTS}/>
-        </header>
+        </main>
+        <footer className="footer">
+          <textarea className="event-form" rows="16" cols="128" defaultValue={JSON.stringify(STUB_DATA, null, 2)}></textarea>
+        </footer>
       </div>
     );
   }
