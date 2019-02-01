@@ -23,14 +23,14 @@ function create(data, diff) {
   let propagate = false;
   let color;
   switch(true) {
-    case diff && diff.state === 0:
+    case diff && diff.state === 1:
       color = COLOR_REUSED_NODE
       break
     case diff && diff.state === -1:
       color = COLOR_NEW_NODE
       propagate = true
       break
-    case !diff && data.children instanceof Array && data.children.length > 0:
+    case data.children instanceof Array && data.children.length > 0:
       color = COLOR_NODE
       break
     default:
@@ -42,7 +42,7 @@ function create(data, diff) {
   data.nodeSvgShape = shape;
 
   if (data.children instanceof Array && data.children.length > 0) {
-    data.children = data.children.map(node => create(node, propagate ? node.diff: null));
+    data.children = data.children.map(node => create(node, propagate ? diff: node.diff));
   }
 
   return data;
