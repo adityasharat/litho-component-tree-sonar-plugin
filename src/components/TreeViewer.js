@@ -44,6 +44,7 @@ class TreeViewer extends Component {
       this.setState({
         config: {
           ...this.state.config,
+          zoom: 2,
           translate: {
             x: dimensions.width / 2,
             y: 80,

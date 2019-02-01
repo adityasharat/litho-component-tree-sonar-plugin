@@ -17,7 +17,7 @@ class EventViewer extends Component {
               this.props.events.map(event => {
                 return (
                   <li className="event-item" key={event.timestamp} onClick={() => {this.onSelect(event)}}>
-                    {event.data.name}
+                    {new Date(event.timestamp).toLocaleTimeString()}
                   </li>
                 )
               })

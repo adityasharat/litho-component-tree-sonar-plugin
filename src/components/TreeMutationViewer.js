@@ -60,7 +60,7 @@ class TreeMutationViewer extends Component {
   }
 
   componentDidMount() {
-    if (this.props.events) {
+    if (this.props.events && this.props.events.length > 0) {
       const event = this.props.events[0];
       if (!event.isInitialized) {
         event.data = create(event.data, event.data.diff)
