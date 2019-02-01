@@ -3,7 +3,7 @@ import Tree from 'react-d3-tree';
 
 import NodeLabel from './NodeLabel';
 
-const data = {"name":"PlaygroundComponent","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
+const STUB_DATA = {"name":"PlaygroundComponent","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
 
 function create(data) {
   let shape = {
@@ -32,7 +32,10 @@ function create(data) {
 class TreeViewer extends Component {
 
   state = {
-    data: create(data),
+    data: { 
+      name : 'null',
+      attributes: {}
+    },
     config: {
       scaleExtent: {
         min: 1,
@@ -72,6 +75,9 @@ class TreeViewer extends Component {
         },
       });
     }
+    this.setState({
+      data: this.props.data
+    });
   }
 
   componentWillReceiveProps(props) {
@@ -105,6 +111,7 @@ class TreeViewer extends Component {
 }
 
 TreeViewer.defaultProps = {
+  data: create(STUB_DATA),
   nodeLabelComponent: {
     render: <NodeLabel />,
   }
