@@ -79,3 +79,34 @@
   padding: 1px 2px 1px 2px;
   border-radius: 2px;
 }
+
+.eventviewer-container {
+  padding: 16px;
+}
+
+.eventviewer-container .title {
+  margin: 0;
+}
+
+.eventviewer-container .events-container {
+
+}
+
+.eventviewer-container .events-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 0;
+  margin: 4px 0 0 8px;
+  list-style: none;
+}
+
+.events-list .event-item {
+  flex: 0 0 auto;
+  margin: 4px 4px 4px 0;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #727272;
+  border-radius: 6px;
+  padding: 8px;
+}
