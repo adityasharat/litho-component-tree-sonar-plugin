@@ -24,28 +24,51 @@ const STUB_EVENTS = [{
   data: NULL_NODE
 }];
 
-//const COLOR_LEAF_NODE = 
+const COLOR_NODE = '#727272'
+const COLOR_LEAF_NODE = '#ebebeb'
+const COLOR_REUSED_NODE = '#aaff99'
+const COLOR_NEW_NODE = '#ff5533'
 
-function create(data) {
+
+function create(data, diff) {
   let shape = {
     shape: 'circle',
     shapeProps: {
-      fill: '#ebebeb',
+      fill: COLOR_LEAF_NODE,
       r: 10,
       strokeWidth: 1,
       stroke: 'rgba(0,0,0,0.2)'
     },
   };
-  
-  if (data.children instanceof Array && data.children.length > 0) {
-    shape.shapeProps.fill = '#727272'
-    data.nodeSvgShape = shape;
-    data.children = data.children.map(create);
-  } else {
-    data.nodeSvgShape = shape;
+
+  let propagate = false;
+  let color;
+  switch(true) {
+    case diff && diff.state === 0:
+      color = COLOR_REUSED_NODE
+      console.log(1);
+      break
+    case diff && diff.state === -1:
+      color = COLOR_NEW_NODE
+      propagate = true
+      console.log(2);
+      break
+    case !diff && data.children instanceof Array && data.children.length > 0:
+      color = COLOR_NODE
+      console.log(3);
+      break
+    default:
+      color = COLOR_LEAF_NODE
+      console.log(4);
+      break
   }
 
-  // TODO: use the diff to color code the nodes
+  shape.shapeProps.fill = color;
+  data.nodeSvgShape = shape;
+
+  if (data.children instanceof Array && data.children.length > 0) {
+    data.children = data.children.map(node => create(node, propagate ? node.diff: null));
+  }
 
   return data;
 }
@@ -62,10 +85,12 @@ class TreeMutationViewer extends Component {
   }
 
   componentDidMount() {
-    if (this.props.events && !this.props.events[0].isInitialized) {
+    if (this.props.events) {
       const event = this.props.events[0];
-      event.data = create(event.data)
-      event.isInitialized = true;
+      if (!event.isInitialized) {
+        event.data = create(event.data, event.data.diff)
+        event.isInitialized = true;
+      }
       this.setState({
         current: event
       });
@@ -74,7 +99,7 @@ class TreeMutationViewer extends Component {
 
   onSelect(event) {
     if (!event.isInitialized) {
-      event.data = create(event.data)
+      event.data = create(event.data, event.data.diff)
     }
     this.setState({
       current: event
