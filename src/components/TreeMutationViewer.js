@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 
-import TreeViewer from './TreeViewer';
+import TreeViewer, { NULL_NODE } from './TreeViewer';
 import EventViewer from './EventViewer';
 
-const STUB_EVENTS = [{"name":1},{"name":2},{"name":3},{"name":4},{"name":5},{"name":6},{"name":7},{"name":8},{"name":9},{"name":10}];
-
-const STUB_DATA = {"name":"PlaygroundComponent","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
+const STUB_DATA = {"name":"Playground","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
+const STUB_EVENTS = [{
+  timestamp: 1,
+  data: STUB_DATA
+}, {
+  timestamp: 2,
+  data: NULL_NODE
+}, {
+  timestamp: 3,
+  data: NULL_NODE
+}, {
+  timestamp: 4,
+  data: NULL_NODE
+}, {
+  timestamp: 5,
+  data: NULL_NODE
+}, {
+  timestamp: 6,
+  data: NULL_NODE
+}];
 
 function create(data) {
   let shape = {
@@ -33,23 +50,35 @@ function create(data) {
 
 class TreeMutationViewer extends Component {
 
-  state = {}
+  state = {
+    current: {}
+  }
+
+  constructor(props) {
+    super(props);
+    this.onSelect = this.onSelect.bind(this);
+  }
 
   componentDidMount() {
     this.setState({
-      data: create(STUB_DATA)
+      current: {}
     });
   }
 
   onSelect(event) {
-    console.log('onSelect', event);
+    if (!event.isInitialized) {
+      event.data = create(event.data)
+    }
+    this.setState({
+      current: event
+    });
   }
 
   render() {
     return (
       <div>
         <EventViewer events={this.props.events} onSelect={this.onSelect}/>
-        <TreeViewer data={this.state.data}/>
+        <TreeViewer data={this.state.current.data}/>
       </div>
     );
   }

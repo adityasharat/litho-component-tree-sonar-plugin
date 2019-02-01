@@ -3,15 +3,15 @@ import Tree from 'react-d3-tree';
 
 import NodeLabel from './NodeLabel';
 
-const DEFAULT_NODE = { 
-  name : 'null',
+const NULL_NODE = { 
+  name : 'NullNode',
   attributes: {}
 }
 
 class TreeViewer extends Component {
 
   state = {
-    data: DEFAULT_NODE,
+    data: NULL_NODE,
     config: {
       scaleExtent: {
         min: 1,
@@ -42,7 +42,6 @@ class TreeViewer extends Component {
     if (this.treeContainer) {
       const dimensions = this.treeContainer.current.getBoundingClientRect();
       this.setState({
-        data: this.props.data || DEFAULT_NODE,
         config: {
           ...this.state.config,
           translate: {
@@ -55,16 +54,23 @@ class TreeViewer extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if (this.props.data === props.data) {
-      return;
-    } else {
+    if (this.props.data !== props.data) {
       this.setState({
-        data: props.data || DEFAULT_NODE
+        data: props.data || NULL_NODE
       });
     }
   }
 
+  shouldComponentUpdate(props, state) {
+    if (this.props.data === props.data && this.state === state) {
+      return false;
+    }
+
+    return true;
+  }
+
   render() {
+    console.log('TreeViewer: render')
     return (
       <div id="treeWrapper" style={{width: '100%', height: '1440px'}} ref={this.treeContainer}>
         <Tree data={this.state.data} 
@@ -85,10 +91,12 @@ class TreeViewer extends Component {
 }
 
 TreeViewer.defaultProps = {
-  data: DEFAULT_NODE,
+  data: NULL_NODE,
   nodeLabelComponent: {
     render: <NodeLabel />,
   }
 };
 
 export default TreeViewer; 
+
+export { NULL_NODE };
