@@ -24,6 +24,8 @@ const STUB_EVENTS = [{
   data: NULL_NODE
 }];
 
+//const COLOR_LEAF_NODE = 
+
 function create(data) {
   let shape = {
     shape: 'circle',
@@ -60,9 +62,14 @@ class TreeMutationViewer extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      current: this.props.events ? this.props.events[0] : {}
-    });
+    if (this.props.events && !this.props.events[0].isInitialized) {
+      const event = this.props.events[0];
+      event.data = create(event.data)
+      event.isInitialized = true;
+      this.setState({
+        current: event
+      });
+    }
   }
 
   onSelect(event) {
