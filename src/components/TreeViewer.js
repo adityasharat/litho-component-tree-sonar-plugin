@@ -3,39 +3,15 @@ import Tree from 'react-d3-tree';
 
 import NodeLabel from './NodeLabel';
 
-const STUB_DATA = {"name":"PlaygroundComponent","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
-
-function create(data) {
-  let shape = {
-    shape: 'circle',
-    shapeProps: {
-      fill: '#ebebeb',
-      r: 10,
-      strokeWidth: 1,
-      stroke: 'rgba(0,0,0,0.2)'
-    },
-  };
-  
-  if (data.children instanceof Array && data.children.length > 0) {
-    shape.shapeProps.fill = '#727272'
-    data.nodeSvgShape = shape;
-    data.children = data.children.map(create);
-  } else {
-    data.nodeSvgShape = shape;
-  }
-
-  // TODO: use the diff to color code the nodes
-
-  return data;
+const DEFAULT_NODE = { 
+  name : 'null',
+  attributes: {}
 }
 
 class TreeViewer extends Component {
 
   state = {
-    data: { 
-      name : 'null',
-      attributes: {}
-    },
+    data: DEFAULT_NODE,
     config: {
       scaleExtent: {
         min: 1,
@@ -66,6 +42,7 @@ class TreeViewer extends Component {
     if (this.treeContainer) {
       const dimensions = this.treeContainer.current.getBoundingClientRect();
       this.setState({
+        data: this.props.data || DEFAULT_NODE,
         config: {
           ...this.state.config,
           translate: {
@@ -75,9 +52,6 @@ class TreeViewer extends Component {
         },
       });
     }
-    this.setState({
-      data: this.props.data
-    });
   }
 
   componentWillReceiveProps(props) {
@@ -85,7 +59,7 @@ class TreeViewer extends Component {
       return;
     } else {
       this.setState({
-        data: create(props.data)
+        data: props.data || DEFAULT_NODE
       });
     }
   }
@@ -111,7 +85,7 @@ class TreeViewer extends Component {
 }
 
 TreeViewer.defaultProps = {
-  data: create(STUB_DATA),
+  data: DEFAULT_NODE,
   nodeLabelComponent: {
     render: <NodeLabel />,
   }

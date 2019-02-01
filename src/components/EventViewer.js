@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
-const STUB_DATA = [{"name":1},{"name":2},{"name":3},{"name":4},{"name":5},{"name":6},{"name":7},{"name":8},{"name":9},{"name":10}];
-
 class EventViewer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.onSelect = this.props.onSelect.bind(this);
+  }
+
   render() {
     return (
       <div className="eventviewer-container">
@@ -12,7 +16,9 @@ class EventViewer extends Component {
             {
               this.props.events.map(event => {
                 return (
-                  <li className="event-item" key={event.name}>{event.name}</li>
+                  <li className="event-item" key={event.name} onClick={() => {this.onSelect(event)}}>
+                    {event.name}
+                  </li>
                 )
               })
             }
@@ -24,7 +30,8 @@ class EventViewer extends Component {
 }
 
 EventViewer.defaultProps = {
-  events: STUB_DATA
+  events: [],
+  onSelect: () => {}
 };
 
 export default EventViewer;
