@@ -26,14 +26,31 @@ const STUB_EVENTS = [{
 }];
 
 class App extends Component {
+
+  state = {
+    events: STUB_EVENTS
+  }
+
+  constructor(props) {
+    super(props);
+    this.add = this.add.bind(this)
+  }
+
+  add() {
+    console.log('here');
+  }
+
   render() {
     return (
       <div className="app">
         <main className="app-container">
-          <TreeMutationViewer events={STUB_EVENTS}/>
+          <TreeMutationViewer events={this.state.events}/>
         </main>
         <footer className="footer">
           <textarea className="event-form" rows="16" cols="128" defaultValue={JSON.stringify(STUB_DATA, null, 2)}></textarea>
+          <button className="button-add" onClick={() => this.add()}>
+            Add
+          </button>
         </footer>
       </div>
     );

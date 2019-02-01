@@ -114,8 +114,21 @@ body {
 .footer {
   margin: 16px auto 32px auto;
   width: 96%;
+  display: flex;
 }
 
 .event-form {
   font-size: 1em;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.button-add {
+  width: 128px;
+  height: 64px;
+  background: #6aa03e;
+  color: #ddd;
+  font-size: 2em;
+  margin: 0 0 0 16px;
+  border-radius: 8px;
 }
