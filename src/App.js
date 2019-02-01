@@ -29,7 +29,7 @@ class App extends Component {
         events: this.state.events
       })
     } catch (e) {
-      alert(`not a valid json: ${e.getMessage()}`)
+      alert(`not a valid json: ${e}`)
     }
   }
 
