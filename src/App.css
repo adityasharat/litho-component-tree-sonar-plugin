@@ -1,27 +1,10 @@
-/*.app {
-  text-align: center;
-}
-
-.app-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
 .app-container {
-  background-color: #282c34;åå
+  background-color: #efefef;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.app-link {
-  color: #61dafb;
-}
-*/
 
 @keyframes app-logo-spin {
   from {
@@ -33,7 +16,8 @@
 }
 
 .node-container {
-
+  position: relative;
+  top: -12px;
 }
 
 .node-name {
@@ -45,7 +29,8 @@
   background: #fff;
   display: inline-block;
   font-size: 0.2em;
-  margin: 12px 0 0 0;
+  margin: 1px 0 0 0;
+  padding: 1px;
 }
 
 .node-attributes {
@@ -53,6 +38,8 @@
   margin: 0;
   font-size: 8px;
   list-style: none;
+  top: -5px;
+  position: relative;
 }
 
 .node-attributes .node-attribute-row {
@@ -81,6 +68,7 @@
 }
 
 .eventviewer-container {
+  font-size: 0.5em;
   padding: 16px;
 }
 
@@ -102,6 +90,7 @@
 }
 
 .events-list .event-item {
+  background: #5d898f;
   flex: 0 0 auto;
   margin: 4px 4px 4px 0;
   width: 100px;
