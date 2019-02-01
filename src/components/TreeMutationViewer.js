@@ -61,7 +61,7 @@ class TreeMutationViewer extends Component {
 
   componentDidMount() {
     this.setState({
-      current: {}
+      current: this.props.events ? this.props.events[0] : {}
     });
   }
 
