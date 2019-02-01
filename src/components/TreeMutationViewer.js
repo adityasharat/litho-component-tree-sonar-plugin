@@ -1,28 +1,7 @@
 import React, { Component } from 'react';
 
-import TreeViewer, { NULL_NODE } from './TreeViewer';
+import TreeViewer from './TreeViewer';
 import EventViewer from './EventViewer';
-
-const STUB_DATA = {"name":"Playground","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
-const STUB_EVENTS = [{
-  timestamp: 1,
-  data: STUB_DATA
-}, {
-  timestamp: 2,
-  data: NULL_NODE
-}, {
-  timestamp: 3,
-  data: NULL_NODE
-}, {
-  timestamp: 4,
-  data: NULL_NODE
-}, {
-  timestamp: 5,
-  data: NULL_NODE
-}, {
-  timestamp: 6,
-  data: NULL_NODE
-}];
 
 const COLOR_NODE = '#727272'
 const COLOR_LEAF_NODE = '#ebebeb'
@@ -46,20 +25,16 @@ function create(data, diff) {
   switch(true) {
     case diff && diff.state === 0:
       color = COLOR_REUSED_NODE
-      console.log(1);
       break
     case diff && diff.state === -1:
       color = COLOR_NEW_NODE
       propagate = true
-      console.log(2);
       break
     case !diff && data.children instanceof Array && data.children.length > 0:
       color = COLOR_NODE
-      console.log(3);
       break
     default:
       color = COLOR_LEAF_NODE
-      console.log(4);
       break
   }
 
@@ -117,7 +92,7 @@ class TreeMutationViewer extends Component {
 }
 
 TreeMutationViewer.defaultProps = {
-  events: STUB_EVENTS
+  events: []
 }
 
 export default TreeMutationViewer;
