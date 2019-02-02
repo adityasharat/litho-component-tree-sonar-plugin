@@ -27,7 +27,9 @@ class EventViewer extends Component {
                 )
               })
             }
-            <li className="event-item add-item" onClick={() => {this.add()}}></li>
+            <li className="event-item add-item" onClick={() => {this.add()}}>
+              Add
+            </li>
           </ol>
         </div>
       </div>
