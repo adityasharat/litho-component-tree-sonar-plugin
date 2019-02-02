@@ -3,8 +3,6 @@ import './App.css';
 
 import TreeMutationViewer from './components/TreeMutationViewer';
 
-const STUB_DATA = {"name":"Playground","attributes":{"key":"9","id":46,"global-key":"9","props":"{}","state":"{}"},"children":[{"name":"Counter","attributes":{"key":"11","id":49,"global-key":"9,10,11","props":"{}","state":"{}"},"children":[{"name":"Text","attributes":{"key":"8","id":51,"global-key":"9,10,11,10,8","props":"{}","state":"{}"},"children":[]},{"name":"Text","attributes":{"key":"8","id":52,"global-key":"9,10,11,10,8!1","props":"{}","state":"{}"},"children":[]}]},{"name":"Text","attributes":{"key":"8","id":50,"global-key":"9,10,8","props":"{}","state":"{}"},"children":[]}]};
-
 class App extends Component {
 
   state = {
@@ -40,7 +38,7 @@ class App extends Component {
           <TreeMutationViewer events={this.state.events}/>
         </main>
         <footer className="footer">
-          <textarea ref={this.content} className="event-form" rows="16" cols="128" defaultValue={JSON.stringify(STUB_DATA, null, 2)}></textarea>
+          <textarea ref={this.content} className="event-form" rows="16" cols="128"></textarea>
           <button className="button-add" onClick={() => this.add()}>
             Add
           </button>
