@@ -133,3 +133,14 @@ body {
   margin: 0 0 0 16px;
   border-radius: 8px;
 }
+
+.event-item.add-item {
+  background: #6aa03e;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 2em;
+  color: #edeede;
+}
