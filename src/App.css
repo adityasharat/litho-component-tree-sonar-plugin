@@ -104,12 +104,18 @@ body {
 .events-list .event-item {
   background: #5d898f;
   flex: 0 0 auto;
-  margin: 4px 4px 4px 0;
+  margin: 4px 8px 4px 0;
   width: 120px;
   height: 100px;
   border: 1px solid #727272;
   border-radius: 8px;
   padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 .footer {
@@ -143,4 +149,7 @@ body {
   text-align: center;
   font-size: 2em;
   color: #edeede;
+  width: 100px;
+  height: 100px;
+  border-radius: 60px;
 }
