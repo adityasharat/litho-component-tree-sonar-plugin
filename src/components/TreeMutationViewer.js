@@ -8,7 +8,6 @@ const COLOR_LEAF_NODE = '#ebebeb'
 const COLOR_REUSED_NODE = '#aaff99'
 const COLOR_NEW_NODE = '#ff5533'
 
-
 function create(data, diff) {
   let shape = {
     shape: 'circle',
