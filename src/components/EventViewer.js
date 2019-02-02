@@ -5,6 +5,11 @@ class EventViewer extends Component {
   constructor(props) {
     super(props);
     this.onSelect = this.props.onSelect.bind(this);
+    this.add = this.add.bind(this);
+  }
+
+  add() {
+    console.log("add event");
   }
 
   render() {
@@ -22,6 +27,7 @@ class EventViewer extends Component {
                 )
               })
             }
+            <li className="event-item add-item" onClick={() => {this.add()}}></li>
           </ol>
         </div>
       </div>
