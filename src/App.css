@@ -89,7 +89,7 @@ body {
 }
 
 .eventviewer-container .events-container {
-
+  display: flex;
 }
 
 .eventviewer-container .events-list {

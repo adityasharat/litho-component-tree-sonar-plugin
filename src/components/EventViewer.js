@@ -31,6 +31,7 @@ class EventViewer extends Component {
               Add
             </li>
           </ol>
+          <textarea className="event-form" rows="6" cols="64"></textarea>
         </div>
       </div>
     );
