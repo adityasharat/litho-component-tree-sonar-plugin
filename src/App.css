@@ -29,6 +29,7 @@ body {
 .node-container {
   position: relative;
   top: -12px;
+  left: 4px;
 }
 
 .node-name {
@@ -128,6 +129,7 @@ body {
   font-size: 1em;
   padding: 16px;
   border-radius: 8px;
+  height: 100px;
 }
 
 .button-add {
