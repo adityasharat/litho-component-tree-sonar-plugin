@@ -4,7 +4,7 @@ function NodeAttribute(props) {
   return (
     <li className="node-attribute-row">
       <p className="node-attribute-key">{props.name}: </p>
-      <p className="node-attribute-value">{props.value}</p>
+      <p className="node-attribute-value" title={props.value}>{props.value}</p>
     </li>
   );
 }
